@@ -1,0 +1,89 @@
+<h3>User Registration using Template driven form</h3>
+<section>
+    <form #templateForm="ngForm" (ngSubmit)="OnSubmit()" [mustMatch]="['password', 'confirmPassword']">
+        <div class="form-group col-md-10">
+            <label for="inputname">Full Name</label>
+            <input name="name" type="text" class="form-control" id="inputname" placeholder="Full Name"
+                [(ngModel)]="formData.fullName" #fullName="ngModel" required fullName
+                [ngClass]="{ 'is-invalid': templateForm.submitted && fullName.invalid }" />
+            <div *ngIf="templateForm.submitted && templateForm.invalid" class="invalid-feedback">
+                <div *ngIf="fullName.errors && fullName.errors.required">
+                    Full Name is required and must be a valid name
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="inputEmail4">Email</label>
+            <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Email"
+                [(ngModel)]="formData.email" #email="ngModel" required email
+                [ngClass]="{ 'is-invalid': templateForm.submitted && email.invalid }" />
+            <div *ngIf="templateForm.submitted && templateForm.invalid" class="invalid-feedback">
+                <div *ngIf="email.errors && email.errors.required">
+                    Email is required
+                </div>
+                <div *ngIf="email.errors && email.errors.email">Enter valid email</div>
+            </div>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="inputPhoneNo">Phone No</label>
+            <input name="phoneno" type="text" class="form-control" id="inputphoneno" placeholder="Phone No"
+                [(ngModel)]="formData.phoneNo" #phoneNo="ngModel" required phoneNo
+                [ngClass]="{ 'is-invalid': templateForm.submitted && phoneNo.invalid }" />
+            <div *ngIf="templateForm.submitted && templateForm.invalid" class="invalid-feedback">
+                <div *ngIf="phoneNo.errors && phoneNo.errors.required">
+                    Phone is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="inputPassword4">Password</label>
+            <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password"
+                [(ngModel)]="formData.password" #password="ngModel" required password
+                [ngClass]="{ 'is-invalid': templateForm.submitted && phoneNo.invalid }" />
+            <div *ngIf="templateForm.submitted && templateForm.invalid" class="invalid-feedback">
+                <div *ngIf="password.errors && password.errors.required">
+                    Password is required
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-10">
+            <label for="inputPassword423">Confirm Password</label>
+            <input type="password" name="confirmPassword" class="form-control" id="confirmPassword"
+                placeholder="Confirm Password" [(ngModel)]="formData.confirmPassword" #confirmPassword="ngModel"
+                required [ngClass]="{
+          'is-invalid': templateForm.submitted && confirmPassword.invalid
+        }" />
+            <div *ngIf="templateForm.submitted && templateForm.invalid" class="invalid-feedback">
+                <div *ngIf="confirmPassword.errors && confirmPassword.errors.required">
+                    Confirm password is required
+                </div>
+                <div *ngIf="confirmPassword.errors && confirmPassword.errors.mustMatch">
+                    Password and confirmpassword are not matching
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck" name="disclaimer" />
+                <label class="form-check-label" for="gridCheck">
+                    Agree with terms and conditions
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+        <!-- <div>
+        #template variable reference{{templateForm.value| json}}
+      </div> -->
+    </form>
+</section>
+<!-- <section [style.display]="display">
+    <h3>Data</h3>
+    <ul>
+        name: "{{ formData.fullName }}"
+       email:"{{ formData.email }}"
+       phoneNo: "{{ formData.phoneNo }}"
+       password: "{{ formData.password }}"
+       confirmPassword: "{{ formData.confirmPassword }}"
+    </ul>
+</section> -->
