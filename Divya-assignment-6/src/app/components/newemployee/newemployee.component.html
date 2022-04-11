@@ -1,0 +1,28 @@
+<p>Divya</p>
+<table class="table" class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Employee_Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Age</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let empdel of employees">
+            <td>
+                <p>{{ empdel.id }}</p>
+            </td>
+            <td>
+                <p>{{ empdel.employee_name }}</p>
+            </td>
+            <td>
+                <p>{{ empdel.employee_salary }}</p> 
+                
+            </td>
+            <td>
+                <p>{{ empdel.employee_age }}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
